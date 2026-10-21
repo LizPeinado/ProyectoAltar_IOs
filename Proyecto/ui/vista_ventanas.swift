@@ -8,7 +8,7 @@
 import SwiftUI
 import RealityKit
 
-struct ContentView: View {
+struct VistaVentanas: View {
 
     var body: some View {
         VStack {
@@ -18,6 +18,6 @@ struct ContentView: View {
 }
 
 #Preview(windowStyle: .automatic) {
-    ContentView()
+    VistaVentanas()
         .environment(AppModel())
 }

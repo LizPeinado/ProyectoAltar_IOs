@@ -114,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FBA419903086536800D6365C /* Build configuration list for PBXProject "Proyecto" */;
+			buildConfigurationList = FBA419903086536800D6365C /* Build configuration list for PBXProject "ProyectoAltar" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -336,7 +336,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FBA419903086536800D6365C /* Build configuration list for PBXProject "Proyecto" */ = {
+		FBA419903086536800D6365C /* Build configuration list for PBXProject "ProyectoAltar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FBA419B13086536900D6365C /* Debug */,

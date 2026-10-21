@@ -18,7 +18,7 @@ struct ProyectoApp: App {
             if avPlayerViewModel.isPlaying {
                 AVPlayerView(viewModel: avPlayerViewModel)
             } else {
-                ContentView()
+                VistaVentanas()
                     .environment(appModel)
             }
         }

@@ -2,7 +2,7 @@
   "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
     "Immersive.usda",
-    "Untitled Scene.usda"
+    "altar.usda"
   ],
   "recentIdentifiers" : {
 
@@ -72,6 +72,52 @@
           -0.012520999,
           2.3316453,
           1.3259356,
+          1
+        ]
+      }
+    ],
+    "72121EC7-200F-481A-81C0-AB1D0D5A13B4" : [
+      {
+        "date" : 814285606.806821,
+        "title" : "Untitled",
+        "transform" : [
+          0.99680233,
+          0,
+          -0.07990705,
+          0,
+          -0.05650282,
+          0.7071069,
+          -0.70484567,
+          0,
+          0.056502827,
+          0.70710677,
+          0.7048458,
+          0,
+          0.2932376,
+          1.9864507,
+          1.6529856,
+          1
+        ]
+      },
+      {
+        "date" : 814285550.287535,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0.7071069,
+          -0.70710677,
+          0,
+          0,
+          0.70710677,
+          0.7071069,
+          0,
+          0.16021472,
+          1.9864507,
+          1.6711316,
           1
         ]
       }
@@ -280,5 +326,5 @@
   "sceneViewportBackgroundColors" : {
 
   },
-  "selectedSceneRelativePath" : "Immersive.usda"
+  "selectedSceneRelativePath" : "altar.usda"
 }
