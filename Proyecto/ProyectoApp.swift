@@ -24,7 +24,7 @@ struct ProyectoApp: App {
         }
         
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            ImmersiveView()
+            VistaRealityKit()
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open

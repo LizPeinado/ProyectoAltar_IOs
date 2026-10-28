@@ -1,13 +1,23 @@
 {
   "pathsToIds" : {
+    "\/RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Untitled%20Scene%201.usda" : "A7572E75-FFA2-40F3-8168-CF0680D0AC7E",
     "\/RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Untitled%20Scene.usda" : "19D9865E-49CB-4C87-A85C-D8E20B753577",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/AltarCompleto.usda" : "FA55F765-A1D2-4DB0-A053-54D0E357D5F5",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/AltarConFloreros.usda" : "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/AltarConFlores.usda" : "07A7E530-952B-45D5-BDB3-3C816EF4E7E6",
+    "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/AltarSinElementos.usda" : "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/Immersive.usda" : "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
     "RealityKitContent\/Sources\/RealityKitContent\/RealityKitContent.rkassets\/altar.usda" : "72121EC7-200F-481A-81C0-AB1D0D5A13B4"
   },
   "projectID" : -2317343673359921128,
   "uuidToIntID" : {
+    "07A7E530-952B-45D5-BDB3-3C816EF4E7E6" : 5053090513455354834,
+    "0D4FAE92-9217-4892-98CF-1E7C6CE96325" : -2406778790453999723,
     "19D9865E-49CB-4C87-A85C-D8E20B753577" : 2391556285429878267,
     "72121EC7-200F-481A-81C0-AB1D0D5A13B4" : -5881268823374693041,
-    "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD" : -153947886298063541
+    "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938" : -2934676949382746450,
+    "A7572E75-FFA2-40F3-8168-CF0680D0AC7E" : -8286427829539598001,
+    "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD" : -153947886298063541,
+    "FA55F765-A1D2-4DB0-A053-54D0E357D5F5" : -7161083030919982529
   }
 }
