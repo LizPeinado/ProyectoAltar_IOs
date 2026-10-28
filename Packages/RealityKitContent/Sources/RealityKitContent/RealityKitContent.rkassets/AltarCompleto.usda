@@ -13,14 +13,86 @@ def Xform "Root"
     float3 xformOp:translate = (0, 0, -1.3884802)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-    def "Altar_ConCosas" (
+    def "altar_completo" (
         active = true
-        prepend references = @Altar_ConCosas.usdz@
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        references = @modelos/altar_completo.usdz@
     )
     {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, -0.0153541565)
+        float3 xformOp:translate = (0, 0, -1.56651)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def RealityKitTimeline "Bailando"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                int blendLayer = 500
+                double duration = 16.96666717529297
+                uniform token info:id = "107856B8-84E1-4B5C-89A2-CBF898E45801"
+                double loopCount = 0
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </Root/oliver_baila>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+    }
+
+    def "oliver_baila" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        references = @modelos/oliver/oliver_baila.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.2826554, -1.937151e-7, -0.65135074)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            token info:id = "RealityKit.AnimationLibrary"
+
+            def RealityKitClipDefinition "Clip_oliver_idle"
+            {
+                uniform string[] clipNames = []
+                uniform string sourceAnimationName = "oliver_idle"
+                uniform double[] startTimes = []
+            }
+
+            def RealityKitAnimationFile "oliver_idle"
+            {
+                uniform bool looping = 1
+                uniform string name = "oliver_idle"
+            }
+
+            def RealityKitAnimationFile "default_subtree_animation"
+            {
+                uniform bool looping = 1
+                uniform string name = "default subtree animation"
+            }
+
+            def RealityKitAnimationFile "oliver_idle_1"
+            {
+                uniform asset file = @modelos/oliver/oliver_idle.usdz@
+                uniform bool looping = 1
+                uniform string name = "oliver_idle 1"
+            }
+        }
     }
 }
 

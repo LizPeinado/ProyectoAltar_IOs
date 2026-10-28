@@ -10,35 +10,37 @@
 
 def Xform "Root"
 {
-    def "Altar_vacio" (
+    reorder nameChildren = ["Altar_vacio", "florero", "Altar_sin_elementos", "florero", "Timeline"]
+    def "Altar_sin_elementos" (
         active = true
         customData = {
-            float3 rotationEulerHint = (1.5707959, 3.1415927, 3.141593)
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
         }
-        prepend references = @Altar_vacio.usdz@
+        references = @modelos/Altar_sin_elementos.usdz@
     )
     {
-        quatf xformOp:orient = (0.70710677, -0.70710677, 2.2476458e-8, -8.4293696e-8)
-        float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (0, 0, -2)
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.000009627081, 0.000002026558, -1.5665072)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
     def "florero" (
         active = true
-        prepend references = @florero.usdz@
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        references = @modelos/florero.usdz@
     )
     {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0.32600403, -0.57524943)
+        float3 xformOp:translate = (-0.57876354, 0.36889347, -0.2708664)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "RCP_BehaviorsContainer"
         {
-            rel behaviors = [
-                </Root/florero/OnNotification>,
-                </Root/florero/OnTap>,
-            ]
+            rel behaviors = </Root/florero/OnNotification>
             uniform token info:id = "RCP.BehaviorsContainer"
         }
 
@@ -85,33 +87,36 @@ def Xform "Root"
             }
         }
 
-        def Preliminary_Behavior "OnTap"
-        {
-            rel actions = </Root/florero/OnTap/Action>
-            uniform bool exclusive
-            rel triggers = </Root/florero/OnTap/Trigger>
-
-            def Preliminary_Trigger "Trigger"
-            {
-                rel affectedObjects = </Root/florero>
-                token info:id = "TapGesture"
-            }
-
-            def Preliminary_Action "Action"
-            {
-                rel affectedObjects = None
-                rel animationLibraryKeyOverrideKey = </Root/florero/OnTap/Trigger>
-                token info:id = "PlayTimeline"
-                int loops = 0
-                int performCount = 1
-                token type = "serial"
-            }
-        }
-
         def RealityKitComponent "InputTarget"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            uniform token info:id = "RealityKit.AnimationLibrary"
+        }
+    }
+
+    def RealityKitTimeline "Timeline"
+    {
+        def RealityKitTrack "Track"
+        {
+        }
+    }
+
+    def "vestido_catrina" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        prepend references = @modelos/vestido_catrina.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (0.2, 0.2, 0.2)
+        float3 xformOp:translate = (0.8992495, -3.1745003e-8, -0.60020053)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

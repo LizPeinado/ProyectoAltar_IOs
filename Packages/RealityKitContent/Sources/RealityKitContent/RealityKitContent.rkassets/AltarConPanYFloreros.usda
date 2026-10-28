@@ -12,16 +12,39 @@ def Xform "Root"
 {
     def "Skate" (
         active = true
-        prepend references = @Skate.usdz@
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        references = @modelos/Skate.usdz@
     )
     {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.25814733, 0.6589335, -0.19955897)
+        float3 xformOp:translate = (0.6224138, 0.17645377, -0.5910969)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "InputTarget"
         {
             uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.27111578, 0.20797515, 0.5017314)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.6524711, -0.03172307, 0.14285704)
+                }
+            }
         }
 
         def RealityKitComponent "RCP_BehaviorsContainer"
@@ -53,25 +76,20 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+    }
 
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.27111578, 0.20797515, 0.5017314)
-                token shapeType = "Box"
-
-                def RealityKitStruct "pose"
-                {
-                    float3 position = (-0.6524711, -0.03172307, 0.14285704)
-                }
-            }
+    def "altar_panyfloreros" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
         }
+        prepend references = @modelos/altar_panyfloreros.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, -1.56651)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

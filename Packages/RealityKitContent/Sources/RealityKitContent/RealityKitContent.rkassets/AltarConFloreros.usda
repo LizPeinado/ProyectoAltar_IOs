@@ -10,37 +10,34 @@
 
 def Xform "Root"
 {
-    def "altar" (
+    reorder nameChildren = ["altar_floreros", "pan_muerto"]
+    def "altar_floreros" (
         active = true
-        prepend references = @altar.usda@
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        references = @modelos/altar_floreros.usdz@
     )
     {
+        reorder nameChildren = ["altar", "florero", "pan_muerto", "Plato_Ceramica_Pan_Individual_002", "_materials", "Cempasuchil_004", "Papel_Morado_Mariposa_001", "Cempasuchil_003", "Papel_Rosa_Corazon_002", "Cempasuchil_011", "Papel_Naranja_Calavera_002", "Cempasuchil_012", "Papel_Rosa_Corazon", "Papel_Morado_Mariposa", "Cempasuchil_010", "Papel_Naranja_Velas_001", "Papel_Morado_Catrina", "Cempasuchil_009", "Cempasuchil", "Papel_Naranja_Calavera", "Cempasuchil_001", "Mesh_001", "Cempasuchil_008", "Papel_Naranja_Calavera_003", "Papel_Naranja_Velas", "frame_mesh_001", "Cempasuchil_007", "Arco_Cempasuchil", "Papel_Rosa_Cempasuchiles_001", "Cube", "Cempasuchil_006", "Papel_Rosa_Corazon_001", "Cempasuchil_002", "Cempasuchil_005", "Papel_Naranja_Calavera_001", "env_light"]
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "florero" (
-        active = true
-        prepend references = @florero.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.00001, 0, -1.56651)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
     def "pan_muerto" (
         active = true
-        prepend references = @pan_muerto.usdz@
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+        references = @modelos/pan_muerto.usdz@
     )
     {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.003002435, 0.4661976, 0)
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1.5, 1.5, 1.5)
+        float3 xformOp:translate = (0.008264661, -0.13411504, -0.23723796)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
 
         def RealityKitComponent "Collider"
         {
@@ -59,6 +56,11 @@ def Xform "Root"
                     float3 position = (-0.012640312, 0.14967555, 0.50836265)
                 }
             }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
         }
 
         def RealityKitComponent "RCP_BehaviorsContainer"
