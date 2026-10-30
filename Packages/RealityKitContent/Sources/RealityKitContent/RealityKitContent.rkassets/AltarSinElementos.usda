@@ -14,6 +14,7 @@
 
 def Xform "Root"
 {
+    reorder nameChildren = ["Timeline", "FloreroMovimiento"]
     uniform token[] xformOpOrder = []
 
     def "Altar_sin_elementos" (
@@ -67,6 +68,104 @@ def Xform "Root"
                         float3 position = (0.0022426308, 0.008500836, 0.18614532)
                     }
                 }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Timeline"
+    {
+        reorder nameChildren = ["Track3", "Track", "Track2", "Track4"]
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Transform_By_1"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2
+                uniform token info:id = "C8525B36-286C-4E46-9A60-CFA69283BE55"
+                float3 position = (0, 0, 0.3)
+                double startTime = 0
+                rel target = </Root/florero>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2.5
+                uniform token info:id = "C8525B36-286C-4E46-9A60-CFA69283BE55"
+                float3 position = (0, 0, 0)
+                double startTime = 2.0356099178913283
+                rel target = </Root/florero>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2
+                uniform token info:id = "B3441E85-E2E5-4056-8C5B-B163BF81A91B"
+                quatf rotation = (-4.371139e-8, 0, 0, 1)
+                double startTime = 0.15374215253790527
+                rel target = </Root/florero>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_To"
+            {
+                string actionKind = "moveTo"
+                int blendLayer = 300
+                double duration = 2
+                uniform token info:id = "955825E9-8938-45AD-9FFC-3C3C72377C9B"
+                float3 position = (0.9478915, 0.79998374, 0.5079926)
+                quatf rotation = (0.70710677, -0.70710677, 0, 0)
+                float3 scale = (0.94021297, 0.94021297, 0.94021297)
+                double startTime = 2.3961359404630005
+                rel target = </Root/florero>
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root>
+                    token type = "parent"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "FloreroMovimiento"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 4.535609917891328
+                uniform token info:id = "1084CCAA-CB7C-4EC9-9882-86596EB69446"
+                double loopCount = 0
+                double startTime = 0.009753957586618877
+                rel timeline = </Root/Timeline>
             }
         }
     }

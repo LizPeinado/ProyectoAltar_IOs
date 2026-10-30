@@ -14,6 +14,7 @@
 
 def Xform "Root"
 {
+    reorder nameChildren = ["Timeline", "SkateFlip"]
     uniform token[] xformOpOrder = []
 
     def "Skate" (
@@ -69,6 +70,78 @@ def Xform "Root"
         float3 xformOp:scale = (1.0241176, 1.0241176, 1.0241176)
         float3 xformOp:translate = (0.0043658763, 0.08904971, 0.16614051)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def RealityKitTimeline "Timeline"
+    {
+        reorder nameChildren = ["Track", "Track2"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2
+                uniform token info:id = "9FD68769-4520-4B9D-A66E-D48AC95DA880"
+                float3 position = (0, 0, 0.4)
+                double startTime = 0
+                rel target = </Root/Skate>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2.5
+                uniform token info:id = "C615CB3F-43F5-4768-A633-7F64D4CC31EC"
+                float3 position = (0, 0, -0.4)
+                double startTime = 2.115185735070071
+                rel target = </Root/Skate>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 3
+                uniform token info:id = "2B1DF4A5-2E08-4F66-8FB0-66EEDA3A1FEE"
+                token spinDirection = "counterclockwise"
+                double startTime = -0.008149340267293963
+                rel target = </Root/Skate>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "SkateFlip"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 4.615185735070071
+                uniform token info:id = "EFBBA4BF-CB92-4723-B391-EF669DE82F78"
+                double loopCount = 0
+                double startTime = 0.000583370669056153
+                rel timeline = </Root/Timeline>
+            }
+        }
     }
 }
 

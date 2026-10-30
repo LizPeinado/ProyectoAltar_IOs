@@ -3,14 +3,6 @@
     "objectMetadataList" : [
       [
         "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
         "Root",
         "Timeline",
         "Track"
@@ -22,7 +14,44 @@
       [
         "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
         "Root",
+        "Timeline2",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
+        "Root",
+        "Timeline2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
+        "Root",
+        "Timeline",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
+        "Root",
         "Timeline"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0D4FAE92-9217-4892-98CF-1E7C6CE96325",
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -51,6 +80,63 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "1D882BDF-A684-464B-AE37-21A4BECDBC10",
+        "Root",
+        "Timeline",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "1D882BDF-A684-464B-AE37-21A4BECDBC10",
+        "Root",
+        "Timeline2",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "1D882BDF-A684-464B-AE37-21A4BECDBC10",
+        "Root",
+        "altar_panyfloreros"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "1D882BDF-A684-464B-AE37-21A4BECDBC10",
+        "Root",
+        "Timeline"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "1D882BDF-A684-464B-AE37-21A4BECDBC10",
+        "Root",
+        "Timeline2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "1D882BDF-A684-464B-AE37-21A4BECDBC10",
+        "Root",
+        "Timeline",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -70,6 +156,66 @@
     "objectMetadataList" : [
       [
         "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+        "Root",
+        "Timeline",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+        "Root",
+        "Timeline2",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+        "Root",
+        "PanMorido"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+        "Root",
+        "Timeline"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "90A42C68-8C6F-4EF9-B3BD-2D6A56A5E938",
+        "Root",
+        "Timeline",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "994F6DFA-AC2A-4E9A-8AA6-8AE0B0A52338" : {
+    "objectMetadataList" : [
+      [
+        "994F6DFA-AC2A-4E9A-8AA6-8AE0B0A52338",
         "Root"
       ],
       {
@@ -94,8 +240,7 @@
     "objectMetadataList" : [
       [
         "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
-        "Root",
-        "Video_Dock"
+        "Root"
       ],
       {
         "disallowsFraming" : false,
@@ -104,7 +249,8 @@
       },
       [
         "C6A7F375-BFE9-46E0-9EA6-1A6B150F43FD",
-        "Root"
+        "Root",
+        "Video_Dock"
       ],
       {
         "disallowsFraming" : false,
@@ -137,15 +283,6 @@
       },
       [
         "FA55F765-A1D2-4DB0-A053-54D0E357D5F5",
-        "Root",
-        "Bailando"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "FA55F765-A1D2-4DB0-A053-54D0E357D5F5",
         "Root"
       ],
       {
@@ -157,6 +294,34 @@
         "Root",
         "Bailando",
         "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "FA55F765-A1D2-4DB0-A053-54D0E357D5F5",
+        "Root",
+        "Bailando"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "FA55F765-A1D2-4DB0-A053-54D0E357D5F5",
+        "Root",
+        "OliverReposo",
+        "Visual"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "FA55F765-A1D2-4DB0-A053-54D0E357D5F5",
+        "Root",
+        "OliverReposo"
       ],
       {
         "isExpanded" : true,

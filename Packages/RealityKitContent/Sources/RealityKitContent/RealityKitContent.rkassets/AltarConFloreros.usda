@@ -14,6 +14,7 @@
 
 def Xform "Root"
 {
+    reorder nameChildren = ["Timeline", "PanMorido"]
     uniform token[] xformOpOrder = []
 
     def "altar_floreros" (
@@ -68,6 +69,101 @@ def Xform "Root"
                         float3 position = (-0.012640311, 0.14967555, 0.5083627)
                     }
                 }
+            }
+        }
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            uniform token info:id = "RealityKit.AnimationLibrary"
+        }
+    }
+
+    def RealityKitTimeline "Timeline"
+    {
+        reorder nameChildren = ["Track", "Track2", "Track3"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2
+                uniform token info:id = "79B9B435-0B9D-491B-9092-14D9429FF6B3"
+                float3 position = (0, 0, 0.15)
+                double startTime = 0
+                rel target = </Root/pan_muerto>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 2.5
+                uniform token info:id = "6F4708B7-019A-4D4D-AE64-64BCEF50DBB6"
+                float3 position = (0, 0, -0.15)
+                double startTime = 2.0911085027589595
+                rel target = </Root/pan_muerto>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "5413075B-3B48-4EAE-8759-303FF31E9409"
+                quatf rotation = (0.70710677, 0, 0, 0.70710677)
+                double startTime = 0.09121563706470205
+                rel target = </Root/pan_muerto>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "5413075B-3B48-4EAE-8759-303FF31E9409"
+                quatf rotation = (0.70710677, 0, 0, -0.70710677)
+                double startTime = 2.367578406640213
+                rel target = </Root/pan_muerto>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "PanMorido"
+    {
+        reorder nameChildren = ["Track2", "Track"]
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 4.59110850275896
+                uniform token info:id = "6300F2E8-2FB7-4101-A35E-0B9026D72D5D"
+                double loopCount = 0
+                double startTime = 0
+                rel timeline = </Root/Timeline>
             }
         }
     }
