@@ -4,13 +4,18 @@
         string creator = "Reality Composer Pro Version 2.0 (494.60.2)"
     }
     defaultPrim = "Root"
+    endTimeCode = 280
+    framesPerSecond = 30
     metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
     upAxis = "Y"
 )
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Altar_vacio", "florero", "Altar_sin_elementos", "florero", "Timeline"]
+    uniform token[] xformOpOrder = []
+
     def "Altar_sin_elementos" (
         active = true
         customData = {
@@ -20,8 +25,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.000009627081, 0.000002026558, -1.5665072)
+        float3 xformOp:scale = (1.0241176, 1.0241176, 1.0241176)
+        float3 xformOp:translate = (0.0043658763, 0.08904971, 0.17001599)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -34,89 +39,36 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.57876354, 0.36889347, -0.2708664)
+        float3 xformOp:scale = (0.9402131, 0.9402131, 0.9402131)
+        float3 xformOp:translate = (0.9478915, 0.79998374, 0.5079926)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def RealityKitComponent "RCP_BehaviorsContainer"
+        def Xform "ZonaToque"
         {
-            rel behaviors = </Root/florero/OnNotification>
-            uniform token info:id = "RCP.BehaviorsContainer"
-        }
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
+            def RealityKitComponent "InputTarget"
             {
-                float3 extent = (0.23872223, 0.23018865, 0.37225604)
-                token shapeType = "Box"
+                uniform token info:id = "RealityKit.InputTarget"
+            }
 
-                def RealityKitStruct "pose"
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
                 {
-                    float3 position = (0.0022426322, 0.008500837, 0.1861453)
+                    float3 extent = (0.23872223, 0.23018865, 0.37225604)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (0.0022426308, 0.008500836, 0.18614532)
+                    }
                 }
             }
         }
-
-        def Preliminary_Behavior "OnNotification"
-        {
-            rel actions = </Root/florero/OnNotification/Action>
-            uniform bool exclusive
-            rel triggers = </Root/florero/OnNotification/Trigger>
-
-            def Preliminary_Trigger "Trigger"
-            {
-                rel affectedObjects = </Root/florero>
-                string identifier = "florero"
-                token info:id = "Notification"
-            }
-
-            def Preliminary_Action "Action"
-            {
-                rel affectedObjects = None
-                rel animationLibraryKeyOverrideKey = </Root/florero/OnNotification/Trigger>
-                token info:id = "PlayTimeline"
-                int loops = 0
-                int performCount = 1
-                token type = "serial"
-            }
-        }
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
-
-        def RealityKitComponent "AnimationLibrary"
-        {
-            uniform token info:id = "RealityKit.AnimationLibrary"
-        }
-    }
-
-    def RealityKitTimeline "Timeline"
-    {
-        def RealityKitTrack "Track"
-        {
-        }
-    }
-
-    def "vestido_catrina" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (-1.5707964, 0, 0)
-        }
-        prepend references = @modelos/vestido_catrina.usdz@
-    )
-    {
-        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (0.2, 0.2, 0.2)
-        float3 xformOp:translate = (0.8992495, -3.1745003e-8, -0.60020053)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

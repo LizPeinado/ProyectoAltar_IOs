@@ -4,13 +4,18 @@
         string creator = "Reality Composer Pro Version 2.0 (494.60.2)"
     }
     defaultPrim = "Root"
+    endTimeCode = 280
+    framesPerSecond = 30
     metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
     upAxis = "Y"
 )
 
 def Xform "Root"
 {
-    reorder nameChildren = ["altar_floreros", "pan_muerto"]
+    uniform token[] xformOpOrder = []
+
     def "altar_floreros" (
         active = true
         customData = {
@@ -21,8 +26,8 @@ def Xform "Root"
     {
         reorder nameChildren = ["altar", "florero", "pan_muerto", "Plato_Ceramica_Pan_Individual_002", "_materials", "Cempasuchil_004", "Papel_Morado_Mariposa_001", "Cempasuchil_003", "Papel_Rosa_Corazon_002", "Cempasuchil_011", "Papel_Naranja_Calavera_002", "Cempasuchil_012", "Papel_Rosa_Corazon", "Papel_Morado_Mariposa", "Cempasuchil_010", "Papel_Naranja_Velas_001", "Papel_Morado_Catrina", "Cempasuchil_009", "Cempasuchil", "Papel_Naranja_Calavera", "Cempasuchil_001", "Mesh_001", "Cempasuchil_008", "Papel_Naranja_Calavera_003", "Papel_Naranja_Velas", "frame_mesh_001", "Cempasuchil_007", "Arco_Cempasuchil", "Papel_Rosa_Cempasuchiles_001", "Cube", "Cempasuchil_006", "Papel_Rosa_Corazon_001", "Cempasuchil_002", "Cempasuchil_005", "Papel_Naranja_Calavera_001", "env_light"]
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.00001, 0, -1.56651)
+        float3 xformOp:scale = (1.0241176, 1.0241176, 1.0241176)
+        float3 xformOp:translate = (0.0043658763, 0.08904971, 0.16614051)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -35,61 +40,34 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1.5, 1.5, 1.5)
-        float3 xformOp:translate = (0.008264661, -0.13411504, -0.23723796)
+        float3 xformOp:scale = (2.5043864, 2.5043864, 2.5043864)
+        float3 xformOp:translate = (0.98165625, -0.41576073, 0.87484545)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def RealityKitComponent "Collider"
+        def Xform "ZonaToque"
         {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
+            def RealityKitComponent "InputTarget"
             {
-                float3 extent = (0.13975477, 0.1397548, 0.045820266)
-                token shapeType = "Box"
+                uniform token info:id = "RealityKit.InputTarget"
+            }
 
-                def RealityKitStruct "pose"
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
                 {
-                    float3 position = (-0.012640312, 0.14967555, 0.50836265)
+                    float3 extent = (0.13975477, 0.13975479, 0.045820333)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (-0.012640311, 0.14967555, 0.5083627)
+                    }
                 }
-            }
-        }
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
-
-        def RealityKitComponent "RCP_BehaviorsContainer"
-        {
-            rel behaviors = </Root/pan_muerto/OnNotification>
-            uniform token info:id = "RCP.BehaviorsContainer"
-        }
-
-        def Preliminary_Behavior "OnNotification"
-        {
-            rel actions = </Root/pan_muerto/OnNotification/Action>
-            uniform bool exclusive
-            rel triggers = </Root/pan_muerto/OnNotification/Trigger>
-
-            def Preliminary_Trigger "Trigger"
-            {
-                rel affectedObjects = </Root/pan_muerto>
-                string identifier = "pan_muerto"
-                token info:id = "Notification"
-            }
-
-            def Preliminary_Action "Action"
-            {
-                rel affectedObjects = None
-                rel animationLibraryKeyOverrideKey = </Root/pan_muerto/OnNotification/Trigger>
-                token info:id = "PlayTimeline"
-                int loops = 0
-                int performCount = 1
-                token type = "serial"
             }
         }
     }

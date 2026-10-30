@@ -4,14 +4,18 @@
         string creator = "Reality Composer Pro Version 2.0 (494.60.2)"
     }
     defaultPrim = "Root"
+    endTimeCode = 280
+    framesPerSecond = 30
     metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
     upAxis = "Y"
 )
 
 def Xform "Root"
 {
     float3 xformOp:translate = (0, 0, -1.3884802)
-    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    uniform token[] xformOpOrder = []
 
     def "altar_completo" (
         active = true
@@ -22,76 +26,45 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, -1.56651)
+        float3 xformOp:scale = (1.0241176, 1.0241176, 1.0241176)
+        float3 xformOp:translate = (0.055700116, 0.11061355, 0.16614051)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def RealityKitTimeline "Bailando"
-    {
-        def RealityKitTrack "Track"
-        {
-            def RealityKitAction "Animation"
-            {
-                string actionKind = "animation"
-                string animation = "default subtree animation"
-                int blendLayer = 500
-                double duration = 16.96666717529297
-                uniform token info:id = "107856B8-84E1-4B5C-89A2-CBF898E45801"
-                double loopCount = 0
-                bool separateAnimatedValue = 1
-                double startTime = 0
-                rel target = </Root/oliver_baila>
-
-                def RealityKitStruct "handoffType"
-                {
-                }
-            }
-        }
-    }
-
-    def "oliver_baila" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (-1.5707964, 0, 0)
-        }
-        references = @modelos/oliver/oliver_baila.usdz@
+    def Xform "vestido_catrina" (
+        prepend references = @modelos/vestido_catrina.usdz@
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.2826554, -1.937151e-7, -0.65135074)
+        float3 xformOp:scale = (0.26525468, 0.26525468, 0.26525468)
+        float3 xformOp:translate = (1.2742797, 0.1719769, -0.0043892986)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "OliverReposo"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (2.5, 2.5, 2.5)
+        double3 xformOp:translate = (-1.600000023841858, -1.25, 0.10000000149011612)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def RealityKitComponent "AnimationLibrary"
+        def Xform "Visual" (
+            prepend references = @oliver.usda@
+        )
         {
-            token info:id = "RealityKit.AnimationLibrary"
-
-            def RealityKitClipDefinition "Clip_oliver_idle"
+            over "oliver_idle"
             {
-                uniform string[] clipNames = []
-                uniform string sourceAnimationName = "oliver_idle"
-                uniform double[] startTimes = []
+                over "RCP_BehaviorsContainer"
+                {
+                    rel behaviors = None
+                    uniform token info:id = "RCP.BehaviorsContainer"
+                }
             }
+        }
 
-            def RealityKitAnimationFile "oliver_idle"
-            {
-                uniform bool looping = 1
-                uniform string name = "oliver_idle"
-            }
-
-            def RealityKitAnimationFile "default_subtree_animation"
-            {
-                uniform bool looping = 1
-                uniform string name = "default subtree animation"
-            }
-
-            def RealityKitAnimationFile "oliver_idle_1"
-            {
-                uniform asset file = @modelos/oliver/oliver_idle.usdz@
-                uniform bool looping = 1
-                uniform string name = "oliver_idle 1"
-            }
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
         }
     }
 }

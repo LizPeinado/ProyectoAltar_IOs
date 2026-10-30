@@ -4,12 +4,18 @@
         string creator = "Reality Composer Pro Version 2.0 (494.60.2)"
     }
     defaultPrim = "Root"
+    endTimeCode = 280
+    framesPerSecond = 30
     metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
     upAxis = "Y"
 )
 
 def Xform "Root"
 {
+    uniform token[] xformOpOrder = []
+
     def "Skate" (
         active = true
         customData = {
@@ -19,61 +25,34 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.6224138, 0.17645377, -0.5910969)
+        float3 xformOp:scale = (0.69758445, 0.69758445, 0.69758445)
+        float3 xformOp:translate = (1.4051538, 0.8753452, 0.47787046)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def RealityKitComponent "InputTarget"
+        def Xform "ZonaToque"
         {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
+            def RealityKitComponent "InputTarget"
             {
-                float3 extent = (0.27111578, 0.20797515, 0.5017314)
-                token shapeType = "Box"
+                uniform token info:id = "RealityKit.InputTarget"
+            }
 
-                def RealityKitStruct "pose"
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
                 {
-                    float3 position = (-0.6524711, -0.03172307, 0.14285704)
+                    float3 extent = (0.2711158, 0.20797515, 0.5017314)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (-0.6524711, -0.03172307, 0.14285704)
+                    }
                 }
-            }
-        }
-
-        def RealityKitComponent "RCP_BehaviorsContainer"
-        {
-            rel behaviors = </Root/Skate/OnNotification>
-            uniform token info:id = "RCP.BehaviorsContainer"
-        }
-
-        def Preliminary_Behavior "OnNotification"
-        {
-            rel actions = </Root/Skate/OnNotification/Action>
-            uniform bool exclusive
-            rel triggers = </Root/Skate/OnNotification/Trigger>
-
-            def Preliminary_Trigger "Trigger"
-            {
-                rel affectedObjects = </Root/Skate>
-                string identifier = "Skate"
-                token info:id = "Notification"
-            }
-
-            def Preliminary_Action "Action"
-            {
-                rel affectedObjects = None
-                rel animationLibraryKeyOverrideKey = </Root/Skate/OnNotification/Trigger>
-                token info:id = "PlayTimeline"
-                int loops = 0
-                int performCount = 1
-                token type = "serial"
             }
         }
     }
@@ -87,8 +66,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, -1.56651)
+        float3 xformOp:scale = (1.0241176, 1.0241176, 1.0241176)
+        float3 xformOp:translate = (0.0043658763, 0.08904971, 0.16614051)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }

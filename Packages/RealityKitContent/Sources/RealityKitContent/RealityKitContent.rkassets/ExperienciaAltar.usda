@@ -1,0 +1,1192 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (494.60.2)"
+    }
+    defaultPrim = "Root"
+    endTimeCode = 280
+    framesPerSecond = 30
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    double3 xformOp:translate = (0, 0, -2)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    def Xform "AltarSinElementos" (
+        prepend references = @AltarSinElementos.usda@
+    )
+    {
+        over "florero"
+        {
+            def RealityKitComponent "RCP_BehaviorsContainer"
+            {
+                rel behaviors = [
+                    </Root/AltarSinElementos/florero/OnTap>,
+                    </Root/AltarSinElementos/florero/OnNotification>,
+                ]
+                uniform token info:id = "RCP.BehaviorsContainer"
+            }
+
+            def Preliminary_Behavior "OnTap"
+            {
+                rel actions = </Root/AltarSinElementos/florero/OnTap/Action>
+                bool exclusive = 1
+                rel triggers = </Root/AltarSinElementos/florero/OnTap/Trigger>
+
+                def Preliminary_Trigger "Trigger"
+                {
+                    rel affectedObjects = </Root/AltarSinElementos/florero>
+                    token info:id = "TapGesture"
+                }
+
+                def Preliminary_Action "Action"
+                {
+                    rel affectedObjects = </Root>
+                    rel animationLibraryKey = </Root/Colocar_florero>
+                    rel animationLibraryKeyOverrideKey = </Root/AltarSinElementos/florero/OnTap/Trigger>
+                    token info:id = "PlayTimeline"
+                    int loops = 0
+                    int performCount = 1
+                    token type = "serial"
+                }
+            }
+
+            def Preliminary_Behavior "OnNotification"
+            {
+                rel actions = </Root/AltarSinElementos/florero/OnNotification/Action>
+                bool exclusive = 1
+                rel triggers = </Root/AltarSinElementos/florero/OnNotification/Trigger>
+
+                def Preliminary_Trigger "Trigger"
+                {
+                    rel affectedObjects = </Root/AltarSinElementos/florero>
+                    string identifier = "florero"
+                    token info:id = "Notification"
+                }
+
+                def Preliminary_Action "Action"
+                {
+                    rel affectedObjects = </Root>
+                    rel animationLibraryKey = </Root/Colocar_florero>
+                    rel animationLibraryKeyOverrideKey = </Root/AltarSinElementos/florero/OnNotification/Trigger>
+                    token info:id = "PlayTimeline"
+                    int loops = 0
+                    int performCount = 1
+                    token type = "serial"
+                }
+            }
+        }
+    }
+
+    def Xform "AltarConFloreros" (
+        prepend references = @AltarConFloreros.usda@
+    )
+    {
+        over "pan_muerto"
+        {
+            def RealityKitComponent "RCP_BehaviorsContainer"
+            {
+                rel behaviors = [
+                    </Root/AltarConFloreros/pan_muerto/OnTap>,
+                    </Root/AltarConFloreros/pan_muerto/OnNotification>,
+                ]
+                uniform token info:id = "RCP.BehaviorsContainer"
+            }
+
+            def Preliminary_Behavior "OnTap"
+            {
+                rel actions = </Root/AltarConFloreros/pan_muerto/OnTap/Action>
+                bool exclusive = 1
+                rel triggers = </Root/AltarConFloreros/pan_muerto/OnTap/Trigger>
+
+                def Preliminary_Trigger "Trigger"
+                {
+                    rel affectedObjects = </Root/AltarConFloreros/pan_muerto>
+                    token info:id = "TapGesture"
+                }
+
+                def Preliminary_Action "Action"
+                {
+                    rel affectedObjects = </Root>
+                    rel animationLibraryKey = </Root/Colocar_pan_muerto>
+                    rel animationLibraryKeyOverrideKey = </Root/AltarConFloreros/pan_muerto/OnTap/Trigger>
+                    token info:id = "PlayTimeline"
+                    int loops = 0
+                    int performCount = 1
+                    token type = "serial"
+                }
+            }
+
+            def Preliminary_Behavior "OnNotification"
+            {
+                rel actions = </Root/AltarConFloreros/pan_muerto/OnNotification/Action>
+                bool exclusive = 1
+                rel triggers = </Root/AltarConFloreros/pan_muerto/OnNotification/Trigger>
+
+                def Preliminary_Trigger "Trigger"
+                {
+                    rel affectedObjects = </Root/AltarConFloreros/pan_muerto>
+                    string identifier = "pan_muerto"
+                    token info:id = "Notification"
+                }
+
+                def Preliminary_Action "Action"
+                {
+                    rel affectedObjects = </Root>
+                    rel animationLibraryKey = </Root/Colocar_pan_muerto>
+                    rel animationLibraryKeyOverrideKey = </Root/AltarConFloreros/pan_muerto/OnNotification/Trigger>
+                    token info:id = "PlayTimeline"
+                    int loops = 0
+                    int performCount = 1
+                    token type = "serial"
+                }
+            }
+        }
+    }
+
+    def Xform "AltarConPanYFloreros" (
+        prepend references = @AltarConPanYFloreros.usda@
+    )
+    {
+        over "Skate"
+        {
+            def RealityKitComponent "RCP_BehaviorsContainer"
+            {
+                rel behaviors = [
+                    </Root/AltarConPanYFloreros/Skate/OnTap>,
+                    </Root/AltarConPanYFloreros/Skate/OnNotification>,
+                ]
+                uniform token info:id = "RCP.BehaviorsContainer"
+            }
+
+            def Preliminary_Behavior "OnTap"
+            {
+                rel actions = </Root/AltarConPanYFloreros/Skate/OnTap/Action>
+                bool exclusive = 1
+                rel triggers = </Root/AltarConPanYFloreros/Skate/OnTap/Trigger>
+
+                def Preliminary_Trigger "Trigger"
+                {
+                    rel affectedObjects = </Root/AltarConPanYFloreros/Skate>
+                    token info:id = "TapGesture"
+                }
+
+                def Preliminary_Action "Action"
+                {
+                    rel affectedObjects = </Root>
+                    rel animationLibraryKey = </Root/Colocar_Skate>
+                    rel animationLibraryKeyOverrideKey = </Root/AltarConPanYFloreros/Skate/OnTap/Trigger>
+                    token info:id = "PlayTimeline"
+                    int loops = 0
+                    int performCount = 1
+                    token type = "serial"
+                }
+            }
+
+            def Preliminary_Behavior "OnNotification"
+            {
+                rel actions = </Root/AltarConPanYFloreros/Skate/OnNotification/Action>
+                bool exclusive = 1
+                rel triggers = </Root/AltarConPanYFloreros/Skate/OnNotification/Trigger>
+
+                def Preliminary_Trigger "Trigger"
+                {
+                    rel affectedObjects = </Root/AltarConPanYFloreros/Skate>
+                    string identifier = "Skate"
+                    token info:id = "Notification"
+                }
+
+                def Preliminary_Action "Action"
+                {
+                    rel affectedObjects = </Root>
+                    rel animationLibraryKey = </Root/Colocar_Skate>
+                    rel animationLibraryKeyOverrideKey = </Root/AltarConPanYFloreros/Skate/OnNotification/Trigger>
+                    token info:id = "PlayTimeline"
+                    int loops = 0
+                    int performCount = 1
+                    token type = "serial"
+                }
+            }
+        }
+    }
+
+    def Xform "AltarCompleto" (
+        prepend references = @AltarCompleto.usda@
+    )
+    {
+        over "OliverReposo"
+        {
+            over "Visual"
+            {
+            }
+        }
+
+        over "vestido_catrina" (
+            active = false
+        )
+        {
+        }
+    }
+
+    def Xform "mp3" (
+        prepend references = @modelos/mp3.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (0.11400619, 0.11400619, 0.11400619)
+        float3 xformOp:translate = (0, 4.3996056e-9, 0.6947139)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "ZonaToque"
+        {
+            def RealityKitComponent "InputTarget"
+            {
+                uniform token info:id = "RealityKit.InputTarget"
+            }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2.631436, 0.67236024, 1.8429571)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (0, -0.046366867, 0.9214785)
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["oliver_song.mp3"]
+                rel values = </Root/oliver_song_mp3>
+            }
+        }
+
+        def RealityKitTimeline "ReproducirCancion"
+        {
+            uniform token info:id = "50B00DD3-9EEF-4A4E-A626-D71EF2B465CB"
+
+            def RealityKitTrack "Track_OcultarReposo"
+            {
+                uniform token info:id = "E40E77CE-2584-4A08-A83D-8BCFD85FCFAB"
+
+                def RealityKitAction "OcultarReposo"
+                {
+                    string actionKind = "hide"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "8B4DED5C-2F57-4B32-A985-57F2002FBB46"
+                    double startTime = 0
+                    rel target = </Root/AltarCompleto/OliverReposo>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_MostrarBaile"
+            {
+                uniform token info:id = "2B238FF2-DD69-47EF-B0B9-258E25037926"
+
+                def RealityKitAction "MostrarBaile"
+                {
+                    string actionKind = "show"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "769CD879-E63A-4B0D-9EC9-9F9D3C1554BD"
+                    double startTime = 0
+                    rel target = </Root/OliverMusica>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_Cancion"
+            {
+                uniform token info:id = "1DB70D3A-D610-4786-927F-A28B6DD18FC5"
+
+                def RealityKitAction "Cancion"
+                {
+                    string actionKind = "audio"
+                    string audioResourceName = "oliver_song.mp3"
+                    bool controlPlayback = 1
+                    double duration = 212.793469
+                    uniform token info:id = "DF95711F-C778-4C0A-84AB-1D8216325868"
+                    double startTime = 0
+                    rel target = </Root/mp3>
+
+                    def RealityKitStruct "handoffType"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_TerminarBaile"
+            {
+                uniform token info:id = "AB54C32D-B89E-46B5-B8EF-206A910BE689"
+
+                def RealityKitAction "TerminarBaile"
+                {
+                    string actionKind = "hide"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "C4A1AFA1-4E73-4A37-A1EA-E796F87B416C"
+                    double startTime = 212.794469
+                    rel target = </Root/OliverMusica>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_VolverAReposo"
+            {
+                uniform token info:id = "06F44500-9119-4533-B74B-12FD1A0C9C1F"
+
+                def RealityKitAction "VolverAReposo"
+                {
+                    string actionKind = "show"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "17461119-822C-412F-B439-170FEA7CFDA9"
+                    double startTime = 212.794469
+                    rel target = </Root/AltarCompleto/OliverReposo>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_OcultarGuiasPasos"
+            {
+                uniform token info:id = "78561E41-B21C-4EC5-A277-AAB6F3A3FF97"
+
+                def RealityKitAction "OcultarGuiasPasos"
+                {
+                    string actionKind = "hide"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "829EB859-BC3E-4BAE-A477-A3870CFE5D55"
+                    double startTime = 0
+                    rel target = </Root/GuiasPasos>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_MostrarGuiaOliver"
+            {
+                uniform token info:id = "91200C3B-0A41-4734-AB6B-F1F7D08D248C"
+
+                def RealityKitAction "MostrarGuiaOliver"
+                {
+                    string actionKind = "show"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "1E548E13-BB74-457D-9583-F6C98C02BFF1"
+                    double startTime = 0
+                    rel target = </Root/GuiaOliverMusica>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_RestaurarGuiasPasos"
+            {
+                uniform token info:id = "4F1FE793-906C-42F1-B2AF-7583ED0E3CD4"
+
+                def RealityKitAction "RestaurarGuiasPasos"
+                {
+                    string actionKind = "show"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "A948D75A-B519-45DF-BD1D-CF6A620AB048"
+                    double startTime = 212.794469
+                    rel target = </Root/GuiasPasos>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitTrack "Track_OcultarGuiaOliver"
+            {
+                uniform token info:id = "B55F4EC4-8FDE-4BD7-BDFA-4D91B80B899B"
+
+                def RealityKitAction "OcultarGuiaOliver"
+                {
+                    string actionKind = "hide"
+                    int blendLayer = 300
+                    double duration = 0
+                    uniform token info:id = "A39DEB62-F268-49B1-BFF6-25511A5D05E8"
+                    double startTime = 212.794469
+                    rel target = </Root/GuiaOliverMusica>
+
+                    def RealityKitStruct "timingFunction"
+                    {
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = [
+                </Root/mp3/OnTap>,
+                </Root/mp3/OnNotification_baila>,
+            ]
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnTap"
+        {
+            rel actions = </Root/mp3/OnTap/Action>
+            bool exclusive = 1
+            rel triggers = </Root/mp3/OnTap/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/mp3>
+                token info:id = "TapGesture"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root/mp3>
+                rel animationLibraryKey = </Root/mp3/ReproducirCancion>
+                rel animationLibraryKeyOverrideKey = </Root/mp3/OnTap/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
+
+        def Preliminary_Behavior "OnNotification_baila"
+        {
+            rel actions = </Root/mp3/OnNotification_baila/Action>
+            bool exclusive = 1
+            rel triggers = </Root/mp3/OnNotification_baila/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/mp3>
+                string identifier = "baila"
+                token info:id = "Notification"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root/mp3>
+                rel animationLibraryKey = </Root/mp3/ReproducirCancion>
+                rel animationLibraryKeyOverrideKey = </Root/mp3/OnNotification_baila/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
+    }
+
+    def Xform "OliverMusica"
+    {
+        double3 xformOp:translate = (-1.6, 0, 0.1)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def Xform "Visual" (
+            prepend references = @oliver.usda@
+        )
+        {
+            over "oliver_idle"
+            {
+                over "RCP_BehaviorsContainer"
+                {
+                    rel behaviors = </Root/OliverMusica/Visual/oliver_idle/OnNotification_baila>
+                    uniform token info:id = "RCP.BehaviorsContainer"
+                }
+            }
+        }
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            token info:id = "RealityKit.HierarchicalFade"
+        }
+    }
+
+    def RealityKitTimeline "Inicializar"
+    {
+        uniform token info:id = "1F47A4F2-963A-4A4A-BBEA-E5D6A2412C28"
+
+        def RealityKitTrack "Track_Activar_AltarSinElementos"
+        {
+            uniform token info:id = "B8DF3AF8-6FCB-4F5E-8CD2-EBE151274F91"
+
+            def RealityKitAction "Activar_AltarSinElementos"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "B8CFC382-2413-461D-8BB8-5970CFC65F68"
+                double startTime = 0
+                rel target = </Root/AltarSinElementos>
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_AltarConFloreros"
+        {
+            uniform token info:id = "7A59687F-4AB5-4950-9D9C-63475E5B94FE"
+
+            def RealityKitAction "Ocultar_AltarConFloreros"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "0539F020-D503-4005-9968-B50A36CD35BA"
+                double startTime = 0
+                rel target = </Root/AltarConFloreros>
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_AltarConPanYFloreros"
+        {
+            uniform token info:id = "C71822E0-0679-4B6E-8C88-9F5255BEACEC"
+
+            def RealityKitAction "Ocultar_AltarConPanYFloreros"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "14C402A3-F809-4209-9A18-535D9A2C6418"
+                double startTime = 0
+                rel target = </Root/AltarConPanYFloreros>
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_AltarCompleto"
+        {
+            uniform token info:id = "2D52B7A9-CC35-4BD8-ACEE-870C2CB2342C"
+
+            def RealityKitAction "Ocultar_AltarCompleto"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "91CA91EA-B1A0-4244-B736-2BB7C08AF8E3"
+                double startTime = 0
+                rel target = </Root/AltarCompleto>
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_OliverMusica"
+        {
+            uniform token info:id = "9AED7188-92DD-455D-980E-7D5E2EBF165F"
+
+            def RealityKitAction "Ocultar_OliverMusica"
+            {
+                string actionKind = "hide"
+                int blendLayer = 300
+                double duration = 0
+                uniform token info:id = "60CE47C9-756B-49C0-8866-0478E39FD5E4"
+                double startTime = 0
+                rel target = </Root/OliverMusica>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_Activar_OliverReposo"
+        {
+            uniform token info:id = "9DAA7263-235B-4871-91B1-427C8D462813"
+
+            def RealityKitAction "Activar_OliverReposo"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "4E6FADA5-3827-42C1-88ED-E71F6B91EE4C"
+                double startTime = 0
+                rel target = </Root/AltarCompleto/OliverReposo>
+            }
+        }
+
+        def RealityKitTrack "Track_Inicio_GuiasPasos"
+        {
+            uniform token info:id = "B6EF1F2B-B380-4ECA-95A3-6B81702615D3"
+
+            def RealityKitAction "Inicio_GuiasPasos"
+            {
+                string actionKind = "show"
+                int blendLayer = 300
+                double duration = 0
+                uniform token info:id = "197A0EC1-2E5E-41D6-89A6-E778274A504A"
+                double startTime = 0
+                rel target = </Root/GuiasPasos>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_Inicio_GuiaOliverMusica"
+        {
+            uniform token info:id = "37E3FD43-7DFB-4569-9A89-8793A0C0A8CB"
+
+            def RealityKitAction "Inicio_GuiaOliverMusica"
+            {
+                string actionKind = "hide"
+                int blendLayer = 300
+                double duration = 0
+                uniform token info:id = "6106EFEA-062C-4EE1-A046-29DA2D76800C"
+                double startTime = 0
+                rel target = </Root/GuiaOliverMusica>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_Inicio_img_florero"
+        {
+            uniform token info:id = "0EAF4AEE-B3A7-4B14-BA56-39F3F256FCD4"
+
+            def RealityKitAction "Inicio_img_florero"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "8E126BE2-DC12-4750-B598-197557D7DEDC"
+                double startTime = 0
+                rel target = </Root/GuiasPasos/img_florero>
+            }
+        }
+
+        def RealityKitTrack "Track_Inicio_img_pan"
+        {
+            uniform token info:id = "C7670A39-07C4-4662-B1BA-BC8B2BBFA737"
+
+            def RealityKitAction "Inicio_img_pan"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "9BFE3C8A-827F-443A-85C4-3F3841BE6C86"
+                double startTime = 0
+                rel target = </Root/GuiasPasos/img_pan>
+            }
+        }
+
+        def RealityKitTrack "Track_Inicio_img_skate"
+        {
+            uniform token info:id = "5C8E365E-AD37-48C8-8C89-365ECDCB88F3"
+
+            def RealityKitAction "Inicio_img_skate"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "168F2AFB-23BB-4954-BADB-BE111FA49B57"
+                double startTime = 0
+                rel target = </Root/GuiasPasos/img_skate>
+            }
+        }
+
+        def RealityKitTrack "Track_Inicio_img_oliver"
+        {
+            uniform token info:id = "4662384F-E95D-4A46-9F6F-9AB712A81A97"
+
+            def RealityKitAction "Inicio_img_oliver"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "FFEBF256-780E-40F8-B4CF-6C82A8286983"
+                double startTime = 0
+                rel target = </Root/GuiasPasos/img_oliver>
+            }
+        }
+    }
+
+    def RealityKitComponent "RCP_BehaviorsContainer"
+    {
+        rel behaviors = </Root/OnAddedToScene>
+        uniform token info:id = "RCP.BehaviorsContainer"
+    }
+
+    def Preliminary_Behavior "OnAddedToScene"
+    {
+        rel actions = </Root/OnAddedToScene/Action>
+        bool exclusive = 1
+        rel triggers = </Root/OnAddedToScene/Trigger>
+
+        def Preliminary_Trigger "Trigger"
+        {
+            rel affectedObjects = </Root>
+            token info:id = "SceneTransition"
+        }
+
+        def Preliminary_Action "Action"
+        {
+            rel affectedObjects = </Root>
+            rel animationLibraryKey = </Root/Inicializar>
+            rel animationLibraryKeyOverrideKey = </Root/OnAddedToScene/Trigger>
+            token info:id = "PlayTimeline"
+            int loops = 0
+            int performCount = 1
+            token type = "serial"
+        }
+    }
+
+    def RealityKitTimeline "Colocar_florero"
+    {
+        uniform token info:id = "DDE433B8-6E62-4CF7-A3E5-3822ADA92046"
+
+        def RealityKitTrack "Track_BloquearNuevoToque"
+        {
+            uniform token info:id = "92866065-4D6C-4A75-A57B-F4E77001A15B"
+
+            def RealityKitAction "BloquearNuevoToque"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "65CB8683-9B24-4E03-8C43-136A6111CDFA"
+                double startTime = 0
+                rel target = </Root/AltarSinElementos/florero/ZonaToque>
+            }
+        }
+
+        def RealityKitTrack "Track_Colocar"
+        {
+            uniform token info:id = "8A10A2CD-067C-42DC-8AC7-82544D54DB17"
+
+            def RealityKitAction "Colocar"
+            {
+                string actionKind = "moveTo"
+                double duration = 0.45
+                uniform token info:id = "F9E692A1-C4D8-478C-931C-91895C2FCD40"
+                float3 position = (-0.20210855, 0.34998375, 0.007992597)
+                quatf rotation = (0.70710677, -0.70710677, 0, 0)
+                float3 scale = (0.9402131, 0.9402131, 0.9402131)
+                double startTime = 0
+                rel target = </Root/AltarSinElementos/florero>
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root/AltarSinElementos>
+                    token type = "parent"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_AltarSinElementos"
+        {
+            uniform token info:id = "F45B58B3-E90C-459D-99D8-B202F9627AD2"
+
+            def RealityKitAction "Ocultar_AltarSinElementos"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "24249C41-43E5-430E-97B1-47703B3E7662"
+                double startTime = 1
+                rel target = </Root/AltarSinElementos>
+            }
+        }
+
+        def RealityKitTrack "Track_Activar_AltarConFloreros"
+        {
+            uniform token info:id = "98476424-6BAF-4E68-82BC-7356BF60B727"
+
+            def RealityKitAction "Activar_AltarConFloreros"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "0F70E0E1-0A58-4974-BADA-4985204F550C"
+                double startTime = 1
+                rel target = </Root/AltarConFloreros>
+            }
+        }
+
+        def RealityKitTrack "Track_ActualizarProgreso"
+        {
+            uniform token info:id = "FFBE7ECE-FDE9-4011-872B-3AC64CE1CB14"
+
+            def RealityKitAction "ActualizarProgreso"
+            {
+                string actionKind = "notification"
+                double duration = 0
+                uniform token info:id = "0C4A437D-BE8C-4657-9BBE-BBFBE908C23D"
+                string notificationName = "altar.paso1"
+                double startTime = 1
+                rel target = </Root>
+            }
+        }
+
+        def RealityKitTrack "Track_QuitarGuia"
+        {
+            uniform token info:id = "BB34DD22-0D05-4141-8B6F-9E32943AE25D"
+
+            def RealityKitAction "QuitarGuia"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "D68AE594-841B-4CE1-952B-B7517C221ABF"
+                double startTime = 1
+                rel target = </Root/GuiasPasos/img_florero>
+            }
+        }
+
+        def RealityKitTrack "Track_SiguienteGuia"
+        {
+            uniform token info:id = "E046636D-BD5C-49D9-80E1-A113C327084F"
+
+            def RealityKitAction "SiguienteGuia"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "12471210-0D52-41EE-B92D-64E9E6EBE793"
+                double startTime = 1
+                rel target = </Root/GuiasPasos/img_pan>
+            }
+        }
+    }
+
+    def RealityKitTimeline "Colocar_pan_muerto"
+    {
+        uniform token info:id = "97BB99C3-6C4E-4306-8B00-1924B816B261"
+
+        def RealityKitTrack "Track_BloquearNuevoToque"
+        {
+            uniform token info:id = "C54AE999-F7CD-486B-873A-33EC7AC92A5E"
+
+            def RealityKitAction "BloquearNuevoToque"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "832EA601-384F-48F5-816C-06DE018B7090"
+                double startTime = 0
+                rel target = </Root/AltarConFloreros/pan_muerto/ZonaToque>
+            }
+        }
+
+        def RealityKitTrack "Track_Colocar"
+        {
+            uniform token info:id = "1F3533A9-BDE8-4A24-A0FB-88ECB58780E7"
+
+            def RealityKitAction "Colocar"
+            {
+                string actionKind = "moveTo"
+                double duration = 0.45
+                uniform token info:id = "2F73E24C-247B-4217-99F2-490127652047"
+                float3 position = (0.031656224, -0.86576074, 0.37484542)
+                quatf rotation = (0.70710677, -0.70710677, 0, 0)
+                float3 scale = (2.5043864, 2.5043864, 2.5043864)
+                double startTime = 0
+                rel target = </Root/AltarConFloreros/pan_muerto>
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root/AltarConFloreros>
+                    token type = "parent"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_AltarConFloreros"
+        {
+            uniform token info:id = "AA765FE7-60B9-43C9-8752-11C08453C5EC"
+
+            def RealityKitAction "Ocultar_AltarConFloreros"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "F40DEB01-EF83-4DA6-8CD5-806215577A99"
+                double startTime = 1
+                rel target = </Root/AltarConFloreros>
+            }
+        }
+
+        def RealityKitTrack "Track_Activar_AltarConPanYFloreros"
+        {
+            uniform token info:id = "A3FF2D71-F2C8-46BE-97C8-82DA5CAC3B2C"
+
+            def RealityKitAction "Activar_AltarConPanYFloreros"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "1B84207F-020F-446A-8C6E-24B400EF9472"
+                double startTime = 1
+                rel target = </Root/AltarConPanYFloreros>
+            }
+        }
+
+        def RealityKitTrack "Track_ActualizarProgreso"
+        {
+            uniform token info:id = "EBF14AED-8533-44A2-B5F9-114D419A7333"
+
+            def RealityKitAction "ActualizarProgreso"
+            {
+                string actionKind = "notification"
+                double duration = 0
+                uniform token info:id = "1AA6B339-213A-4E3E-AFA5-FF3E4DC79E3B"
+                string notificationName = "altar.paso2"
+                double startTime = 1
+                rel target = </Root>
+            }
+        }
+
+        def RealityKitTrack "Track_QuitarGuia"
+        {
+            uniform token info:id = "847D120D-7B05-4168-A8B7-6AE53F480C3D"
+
+            def RealityKitAction "QuitarGuia"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "93191660-9D58-4B97-A777-9D80BC9B8415"
+                double startTime = 1
+                rel target = </Root/GuiasPasos/img_pan>
+            }
+        }
+
+        def RealityKitTrack "Track_SiguienteGuia"
+        {
+            uniform token info:id = "DDA89ABE-854F-45BE-B297-99276DFE1118"
+
+            def RealityKitAction "SiguienteGuia"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "2504FC2B-7944-4F5F-A73B-671B55CC7905"
+                double startTime = 1
+                rel target = </Root/GuiasPasos/img_skate>
+            }
+        }
+    }
+
+    def RealityKitTimeline "Colocar_Skate"
+    {
+        uniform token info:id = "343725C3-4877-4126-A459-F2AD2FAD2649"
+
+        def RealityKitTrack "Track_BloquearNuevoToque"
+        {
+            uniform token info:id = "FC4DD3B5-74A8-4CE0-99CF-362A8388E784"
+
+            def RealityKitAction "BloquearNuevoToque"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "7A52DB69-155A-4AD6-B234-1C43C84E73F3"
+                double startTime = 0
+                rel target = </Root/AltarConPanYFloreros/Skate/ZonaToque>
+            }
+        }
+
+        def RealityKitTrack "Track_Colocar"
+        {
+            uniform token info:id = "46DBB78F-FA6F-4B8D-A3B1-55D4F5E40C41"
+
+            def RealityKitAction "Colocar"
+            {
+                string actionKind = "moveTo"
+                double duration = 0.45
+                uniform token info:id = "1600314E-51C6-40A6-B226-FA45A2B4044B"
+                float3 position = (0.6551537, 0.42534515, -0.02212952)
+                quatf rotation = (0.70710677, -0.70710677, 0, 0)
+                float3 scale = (0.69758445, 0.69758445, 0.69758445)
+                double startTime = 0
+                rel target = </Root/AltarConPanYFloreros/Skate>
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root/AltarConPanYFloreros>
+                    token type = "parent"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_Ocultar_AltarConPanYFloreros"
+        {
+            uniform token info:id = "CB6334A5-F0B2-484E-83EC-FB4C30CC8335"
+
+            def RealityKitAction "Ocultar_AltarConPanYFloreros"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "0C162C85-4E70-4BBA-8060-B8AA804898B0"
+                double startTime = 1
+                rel target = </Root/AltarConPanYFloreros>
+            }
+        }
+
+        def RealityKitTrack "Track_Activar_AltarCompleto"
+        {
+            uniform token info:id = "76D1F6C7-6CFB-4E17-917A-E4034BC92935"
+
+            def RealityKitAction "Activar_AltarCompleto"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "2948EAC1-263B-4C69-AA78-53702CBFFE60"
+                double startTime = 1
+                rel target = </Root/AltarCompleto>
+            }
+        }
+
+        def RealityKitTrack "Track_ActualizarProgreso"
+        {
+            uniform token info:id = "B7060A39-B3FE-4230-B341-EB28E3B0871D"
+
+            def RealityKitAction "ActualizarProgreso"
+            {
+                string actionKind = "notification"
+                double duration = 0
+                uniform token info:id = "AC46BEA8-0A3C-46B9-A5DF-582530B236C5"
+                string notificationName = "altar.paso3"
+                double startTime = 1
+                rel target = </Root>
+            }
+        }
+
+        def RealityKitTrack "Track_IdleFinal"
+        {
+            uniform token info:id = "27FC9536-CE08-458B-903A-2A64275496B6"
+
+            def RealityKitAction "IdleFinal"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                double duration = 86400
+                uniform token info:id = "944DE61D-2072-4A56-BC68-09DDBEA108DE"
+                double loopCount = 0
+                bool separateAnimatedValue = 1
+                double startTime = 1.001
+                rel target = </Root/AltarCompleto/OliverReposo/Visual/oliver_idle>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track_QuitarGuia"
+        {
+            uniform token info:id = "5A5E369C-06E7-4F99-974E-973510AD1E52"
+
+            def RealityKitAction "QuitarGuia"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "709FF8FC-E035-4AC2-9D0B-23243B89AE72"
+                double startTime = 1
+                rel target = </Root/GuiasPasos/img_skate>
+            }
+        }
+
+        def RealityKitTrack "Track_SiguienteGuia"
+        {
+            uniform token info:id = "B40E59B1-A578-4595-B38F-D0A816DBA16F"
+
+            def RealityKitAction "SiguienteGuia"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "B628E490-0EE2-43F9-B8D6-B85C4C7CE4D3"
+                double startTime = 1
+                rel target = </Root/GuiasPasos/img_oliver>
+            }
+        }
+    }
+
+    def RealityKitAudioFile "oliver_song_mp3"
+    {
+        uniform asset file = @Audio/oliver_song.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def Xform "vestido_catrina" (
+        prepend references = @modelos/vestido_catrina.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (0.26525468, 0.26525468, 0.26525468)
+        float3 xformOp:translate = (1.2742797, 0.1719769, -0.0043892986)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "GuiasPasos"
+    {
+        def RealityKitComponent "HierarchicalFade"
+        {
+            token info:id = "RealityKit.HierarchicalFade"
+        }
+
+        def Xform "img_florero" (
+            prepend references = @Guias.usda@</Root/img_florero>
+        )
+        {
+        }
+
+        def Xform "img_pan" (
+            prepend references = @Guias.usda@</Root/img_pan>
+        )
+        {
+        }
+
+        def Xform "img_skate" (
+            prepend references = @Guias.usda@</Root/img_skate>
+        )
+        {
+        }
+
+        def Xform "img_oliver" (
+            prepend references = @Guias.usda@</Root/img_oliver>
+        )
+        {
+        }
+    }
+
+    def Xform "GuiaOliverMusica" (
+        prepend references = @Guias.usda@</Root/img_oliver>
+    )
+    {
+        def RealityKitComponent "HierarchicalFade"
+        {
+            token info:id = "RealityKit.HierarchicalFade"
+        }
+    }
+}
+

@@ -1,0 +1,222 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def Xform "img_florero"
+    {
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
+        double3 xformOp:translate = (1.3, 0.78, 0.55)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+        def Mesh "Panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform bool doubleSided = 1
+            float3[] extent = [(-0.35, -0.3998972, 0), (0.35, 0.3998972, 0)]
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </Root/img_florero/Material>
+            point3f[] points = [(-0.35, -0.3998972, 0), (0.35, -0.3998972, 0), (0.35, 0.3998972, 0), (-0.35, 0.3998972, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Material "Material"
+        {
+            token outputs:surface.connect = </Root/img_florero/Material/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Root/img_florero/Material/Texture.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @Imagenes/img_florero.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Root/img_florero/Material/UV.outputs:result>
+                float3 outputs:rgb
+            }
+
+            def Shader "UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+        }
+    }
+
+    def Xform "img_pan"
+    {
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
+        double3 xformOp:translate = (1.3, 0.78, 0.55)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+        def Mesh "Panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform bool doubleSided = 1
+            float3[] extent = [(-0.35, -0.3998972, 0), (0.35, 0.3998972, 0)]
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </Root/img_pan/Material>
+            point3f[] points = [(-0.35, -0.3998972, 0), (0.35, -0.3998972, 0), (0.35, 0.3998972, 0), (-0.35, 0.3998972, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Material "Material"
+        {
+            token outputs:surface.connect = </Root/img_pan/Material/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Root/img_pan/Material/Texture.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @Imagenes/img_pan.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Root/img_pan/Material/UV.outputs:result>
+                float3 outputs:rgb
+            }
+
+            def Shader "UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+        }
+    }
+
+    def Xform "img_skate"
+    {
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
+        double3 xformOp:translate = (1.3, 0.78, 0.55)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+        def Mesh "Panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform bool doubleSided = 1
+            float3[] extent = [(-0.35, -0.3998972, 0), (0.35, 0.3998972, 0)]
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </Root/img_skate/Material>
+            point3f[] points = [(-0.35, -0.3998972, 0), (0.35, -0.3998972, 0), (0.35, 0.3998972, 0), (-0.35, 0.3998972, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Material "Material"
+        {
+            token outputs:surface.connect = </Root/img_skate/Material/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Root/img_skate/Material/Texture.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @Imagenes/img_skate.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Root/img_skate/Material/UV.outputs:result>
+                float3 outputs:rgb
+            }
+
+            def Shader "UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+        }
+    }
+
+    def Xform "img_oliver"
+    {
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
+        double3 xformOp:translate = (1.3, 0.78, 0.55)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+        def Mesh "Panel" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform bool doubleSided = 1
+            float3[] extent = [(-0.35, -0.40013707, 0), (0.35, 0.40013707, 0)]
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </Root/img_oliver/Material>
+            point3f[] points = [(-0.35, -0.40013707, 0), (0.35, -0.40013707, 0), (0.35, 0.40013707, 0), (-0.35, 0.40013707, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Material "Material"
+        {
+            token outputs:surface.connect = </Root/img_oliver/Material/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Root/img_oliver/Material/Texture.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @Imagenes/img_oliver.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Root/img_oliver/Material/UV.outputs:result>
+                float3 outputs:rgb
+            }
+
+            def Shader "UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+        }
+    }
+}
+
