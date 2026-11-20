@@ -1,3 +1,4 @@
+import simd
 import RealityKit
 import RealityKitContent
 import SwiftUI
@@ -11,22 +12,23 @@ struct VistaRealityKit: View {
     @State private var cargando = true
     @State private var mensajeError: String?
 
-    // Estado de la música y el baile (se controla 100% desde Swift)
+    // Estado de la musica y el baile
     private enum EstadoMusica { case detenida, sonando, pausada }
     @State private var estadoMusica: EstadoMusica = .detenida
     @State private var controladorAudio: AudioPlaybackController?
     @State private var controladorBaile: AnimationPlaybackController?
 
+    //espacio vacio nuevo.... lets go papoi
     var body: some View {
         RealityView { content in
             appModel.errorEscena = nil
             do {
+                let controlador = Entity()
+                content.add(controlador)
                 let altar = try await Entity(named: "ExperienciaAltar", in: realityKitContentBundle)
-                altar.isEnabled = true
-                altar.findEntity(named: "AltarSinElementos")?.isEnabled = true
-                for nombre in ["AltarConFloreros", "AltarConPanYFloreros", "AltarCompleto"] {
-                    altar.findEntity(named: nombre)?.isEnabled = false
-                }
+                ParticulasOfrendas.preparar(en: altar)
+                paso = 0
+                actualizar(altar)
 
                 // Asegura que la zona de toque del mp3 reciba gestos
                 if let zona = altar.findEntity(named: "mp3")?.findEntity(named: "ZonaToque"),
@@ -34,7 +36,7 @@ struct VistaRealityKit: View {
                     zona.components.set(InputTargetComponent())
                 }
 
-                content.add(altar)
+                controlador.addChild(altar)
                 escena = altar
             } catch {
                 let detalle = error as NSError
@@ -50,25 +52,21 @@ struct VistaRealityKit: View {
                 guard toque.entity.isActive else { return }
                 var entidad: Entity? = toque.entity
                 while let actual = entidad {
-                    if actual.name == "mp3" {
+                    if paso < objetos.count, actual.name == objetos[paso], let altar = escena, !colocando {
+                        colocar(actual, en: altar)
+                        return
+                    }
+                    if paso == 3, actual.name == "mp3" {
                         alternarMusica()
                         return
                     }
                     entidad = actual.parent
                 }
-                _ = toque.entity.applyTapForBehaviors()
             }
         )
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("RealityKit.NotificationTrigger"))) { aviso in
-            guard let id = aviso.userInfo?["RealityKit.NotificationTrigger.Identifier"] as? String else { return }
-            switch id {
-            case "altar.paso1": paso = 1
-            case "altar.paso2": paso = 2
-            case "altar.paso3": paso = 3
-            default: break
-            }
-        }
         .onDisappear {
+            colocacion?.cancel()
+            colocando = false
             detenerTodo()
             escena = nil
         }
@@ -87,9 +85,42 @@ struct VistaRealityKit: View {
         }
     }
 
-    // MARK: - Música y baile
+    private let objetos = ["florero", "pan_muerto", "Skate"]
+    @State private var colocando = false
+    @State private var colocacion: Task<Void, Never>?
 
-    /// Primer toque: suena la canción y Oliver baila. Segundo toque: pausa y Oliver vuelve a idle.
+    private func actualizar(_ altar: Entity) {
+        for (i, nombre) in ["AltarSinElementos", "AltarConFloreros", "AltarConPanYFloreros", "AltarCompleto"].enumerated() {
+            altar.findEntity(named: nombre)?.isEnabled = i == paso
+        }
+        let guias = altar.findEntity(named: "GuiasPasos")
+        for (i, nombre) in ["img_florero", "img_pan", "img_skate", "img_oliver"].enumerated() {
+            guias?.findEntity(named: nombre)?.isEnabled = i == paso
+        }
+        altar.findEntity(named: "mp3")?.isEnabled = paso == 3
+        altar.findEntity(named: "OliverMusica")?.isEnabled = false
+        altar.findEntity(named: "GuiaOliverMusica")?.isEnabled = false
+        if paso == 3, let idle = altar.findEntity(named: "OliverReposo")?.findEntity(named: "oliver_idle"),
+           let anim = idle.components[AnimationLibraryComponent.self]?.animations["idle"] ?? idle.availableAnimations.first {
+            idle.playAnimation(anim.repeat())
+        }
+    }
+
+    private func colocar(_ objeto: Entity, en altar: Entity) {
+        colocando = true
+        let posiciones: [SIMD3<Float>] = [[-0.20210855, 0.34998375, 0.007992597], [0.031656224, -0.86576074, 0.37484542], [0.6551537, 0.42534515, -0.02212952]]
+        let escalas: [Float] = [0.9402131, 2.5043864, 0.69758445]
+        let destino = Transform(scale: SIMD3(repeating: escalas[paso]), rotation: simd_quatf(angle: -.pi / 2, axis: [1, 0, 0]), translation: posiciones[paso])
+        objeto.move(to: destino, relativeTo: objeto.parent, duration: 0.45)
+        colocacion = Task { @MainActor in
+            do { try await Task.sleep(for: .milliseconds(450)) } catch { return }
+            paso += 1
+            actualizar(altar)
+            colocando = false
+        }
+    }
+ 
+    // Primer toque: suena la canción y Oliver baila. Segundo toque: pausa y Oliver vuelve a idle.
     private func alternarMusica() {
         guard let escena,
               let radio = escena.findEntity(named: "mp3"),
@@ -129,7 +160,7 @@ struct VistaRealityKit: View {
         }
     }
 
-    /// Busca el audio en la AudioLibrary del mp3 (RCP) o, si no está, lo carga de la escena.
+    // Busca el audio en la AudioLibrary del mp3o, si no está, lo carga de la escena.
     private func recursoCancion(de radio: Entity) -> AudioResource? {
         if let recurso = radio.components[AudioLibraryComponent.self]?.resources["oliver_song.mp3"] {
             return recurso
@@ -141,13 +172,13 @@ struct VistaRealityKit: View {
         )
     }
 
-    /// Oculta a Oliver en reposo y muestra a Oliver bailando.
+    // Oculta a Oliver en reposo y muestra a Oliver bailando.
     private func mostrarBaile(oliverMusica: Entity, oliver: Entity, reposo: Entity?) {
         fijarVisible(reposo, false)
         oliverMusica.isEnabled = true
         fijarVisible(oliverMusica, true)
 
-        // Si ya existe un baile pausado, solo se reanuda (en sincronía con el audio)
+        // Si ya existe un baile pausado, solo se reanuda
         if let controlador = controladorBaile, controlador.isPaused { return }
 
         guard let baile = oliver.components[AnimationLibraryComponent.self]?.animations["oliver_baila"] else {
@@ -158,7 +189,7 @@ struct VistaRealityKit: View {
         controladorBaile = oliver.playAnimation(baile.repeat(), transitionDuration: 0, startsPaused: false)
     }
 
-    /// Muestra a Oliver en reposo (idle, que sigue animándose) y oculta al que baila.
+    // Muestra a Oliver en reposo (idle, que sigue animándose) y oculta al que baila.
     private func volverAIdle(reposo: Entity?, baile: Entity, terminado: Bool) {
         fijarVisible(reposo, true)
         fijarVisible(baile, false)
